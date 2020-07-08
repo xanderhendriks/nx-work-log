@@ -5,6 +5,7 @@ pipeline {
             steps{
                 sh '''#!/usr/bin/env bash
                       ls -la
+                      cat Jenkinsfile
                    '''
             }
         }
