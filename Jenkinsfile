@@ -3,6 +3,7 @@
 def always_email = "xander@nx-solutions.com" // comma separated
 
 pipeline {
+  agent any
   stages {
     stage('Environment'){
       steps{
