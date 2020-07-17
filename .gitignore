@@ -1,0 +1,7 @@
+.eggs/*
+.idea/*
+build/*
+dist/*
+nx_work_log.egg-info/*
+*/__pycache__/*
+version.py

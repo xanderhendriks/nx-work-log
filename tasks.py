@@ -9,8 +9,8 @@ import subprocess
 
 from invoke import task
 
-# ---------- Per project config ----------
 
+# ---------- Per project config ----------
 NAME = os.path.join("movandi", "mvbrd_utils")
 PY_PATHS = [NAME, "tasks.py", "setup.py", "tests"]  # for linting/formatting
 
@@ -138,6 +138,7 @@ def clean(ctx):
             if fname.endswith((".pyc", ".pyo")) or fname in (".coverage", "junit.xml"):
                 os.remove(os.path.join(root, fname))
                 print("Removing", fname)
+
 
 @task
 def doc(ctx):
