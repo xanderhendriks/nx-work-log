@@ -27,7 +27,7 @@ class ChangeTimeDialog():
     class __ChangeTimeDialog():
         def __init__(self):
             self.hwnd = None
-            rc_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'nx-work-log.rc')
+            rc_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'nx_work_log.rc')
             self.resources = win32rcparser.Parse(rc_file)
             self.minutes = 0
 
