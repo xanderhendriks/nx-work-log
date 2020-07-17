@@ -10,10 +10,11 @@ try:
 except ImportError:
     import win32gui
 
+
 class ChangeTimeDialog():
     instance = None
 
-    def __new__(cls): # __new__ always a classmethod
+    def __new__(cls):
         if not ChangeTimeDialog.instance:
             ChangeTimeDialog.instance = ChangeTimeDialog.__ChangeTimeDialog()
         return ChangeTimeDialog.instance
@@ -69,9 +70,11 @@ class ChangeTimeDialog():
             self.hwnd = hwnd
 
             win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_HOURS']), commctrl.UDM_SETPOS, 0, 5)
-            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_HOURS']), commctrl.UDM_SETRANGE, 0, struct.unpack('L', struct.pack('hh', 10, 1))[0])
+            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_HOURS']), commctrl.UDM_SETRANGE, 0,
+                                 struct.unpack('L', struct.pack('hh', 10, 1))[0])
             win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_MINUTES']), commctrl.UDM_SETPOS, 0, 5)
-            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_MINUTES']), commctrl.UDM_SETRANGE, 0, struct.unpack('L', struct.pack('hh', 10, 1))[0])
+            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_MINUTES']), commctrl.UDM_SETRANGE, 0,
+                                 struct.unpack('L', struct.pack('hh', 10, 1))[0])
 
             # centre the dialog
             desktop = win32gui.GetDesktopWindow()
@@ -92,7 +95,7 @@ class ChangeTimeDialog():
 
         def __on_spin_change(self, hwnd, msg, wparam, lparam):
             id = win32api.LOWORD(wparam)
-            offset =  win32api.LOWORD(win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, id), commctrl.UDM_GETPOS, 0, 0)) - 5
+            offset = win32api.LOWORD(win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, id), commctrl.UDM_GETPOS, 0, 0)) - 5
             win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, id), commctrl.UDM_SETPOS, 0, 5)
 
             if id == self.resources.ids['IDC_SPIN_HOURS']:
@@ -101,4 +104,3 @@ class ChangeTimeDialog():
             elif id == self.resources.ids['IDC_SPIN_MINUTES']:
                 time = self.get_time() + offset
                 self.set_time(time)
-
