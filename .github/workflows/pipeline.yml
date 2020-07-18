@@ -22,7 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Pytest for testing the code
-        run: pytest
+        run: python -m pytest
       - name: Upload pytest test results
         uses: actions/upload-artifact@v1
         with:
