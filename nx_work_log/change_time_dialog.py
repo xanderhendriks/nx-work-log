@@ -4,12 +4,9 @@ import struct
 import win32api
 import win32con
 import win32rcparser
-
-try:
-    import winxpgui as win32gui
-except ImportError:
-    import win32gui
-
+import win32gui
+import win32ui
+from pywin.mfc import dialog
 
 class ChangeTimeDialog():
     instance = None
@@ -25,7 +22,7 @@ class ChangeTimeDialog():
     def __setattr__(self, name):
         return setattr(self.instance, name)
 
-    class __ChangeTimeDialog():
+    class __ChangeTimeDialog(dialog.Dialog):
         def __init__(self):
             self.hwnd = None
             rc_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'nx_work_log.rc')
@@ -69,13 +66,6 @@ class ChangeTimeDialog():
         def __on_init_dialog(self, hwnd, msg, wparam, lparam):
             self.hwnd = hwnd
 
-            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_HOURS']), commctrl.UDM_SETPOS, 0, 5)
-            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_HOURS']), commctrl.UDM_SETRANGE, 0,
-                                 struct.unpack('L', struct.pack('hh', 10, 1))[0])
-            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_MINUTES']), commctrl.UDM_SETPOS, 0, 5)
-            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_SPIN_MINUTES']), commctrl.UDM_SETRANGE, 0,
-                                 struct.unpack('L', struct.pack('hh', 10, 1))[0])
-
             # centre the dialog
             desktop = win32gui.GetDesktopWindow()
             l, t, r, b = win32gui.GetWindowRect(self.hwnd)
@@ -95,12 +85,15 @@ class ChangeTimeDialog():
 
         def __on_spin_change(self, hwnd, msg, wparam, lparam):
             id = win32api.LOWORD(wparam)
-            offset = win32api.LOWORD(win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, id), commctrl.UDM_GETPOS, 0, 0)) - 5
-            win32gui.SendMessage(win32gui.GetDlgItem(self.hwnd, id), commctrl.UDM_SETPOS, 0, 5)
+
+            # Read the NMUPDOWN structure
+            format = 'Piiii'
+            bytes = win32ui.GetBytes(lparam, struct.calcsize(format))
+            _, _, _, _, i_delta = struct.unpack(format, bytes)
 
             if id == self.resources.ids['IDC_SPIN_HOURS']:
-                time = self.get_time() + offset * 60
+                time = self.get_time() - i_delta * 60
                 self.set_time(time)
             elif id == self.resources.ids['IDC_SPIN_MINUTES']:
-                time = self.get_time() + offset
+                time = self.get_time() - i_delta
                 self.set_time(time)

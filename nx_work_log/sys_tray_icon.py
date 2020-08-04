@@ -212,6 +212,9 @@ class SysTrayIcon(object):
         id = win32gui.LOWORD(wparam)
         self.execute_menu_option(id)
 
+    def exit(self):
+        win32gui.DestroyWindow(self.hwnd)
+
     def execute_menu_option(self, id):
         menu_action = self.menu_actions_by_id[id]
         if menu_action == self.EXIT:

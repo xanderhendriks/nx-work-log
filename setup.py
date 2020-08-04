@@ -44,7 +44,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'nxworklog=nx_work_log.nx_work_log:main',
+            'nxworklog=nx_work_log.win_app:main',
         ],
     },
 

@@ -59,6 +59,10 @@ def on_exit(sys_tray_icon):
     minute_timer.cancel()
 
 
+def exit():
+    SysTrayIcon().exit()
+
+
 def main():
     global minute_timer
 
@@ -71,6 +75,5 @@ def main():
     SysTrayIcon(icons['paused'], '00:00', menu_options, call_on_startup=on_startup, on_exit=on_exit, default_menu_index=1)
 
 
-# Minimal self test. You'll need a bunch of ICO files in the icons directory in order for this to work...
 if __name__ == '__main__':
     main()
