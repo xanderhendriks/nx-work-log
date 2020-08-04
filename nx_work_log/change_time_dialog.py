@@ -1,4 +1,3 @@
-import commctrl
 import os
 import struct
 import win32api
@@ -7,6 +6,7 @@ import win32rcparser
 import win32gui
 import win32ui
 from pywin.mfc import dialog
+
 
 class ChangeTimeDialog():
     instance = None
