@@ -43,7 +43,7 @@ setup(
     },
 
     entry_points={
-        'console_scripts': [
+        'gui_scripts': [
             'nxworklog=nx_work_log.win_app:main',
         ],
     },
