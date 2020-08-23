@@ -1,35 +1,22 @@
+import json
 import os
-import threading
-import time
 from nx_work_log.change_time_dialog import ChangeTimeDialog
 from nx_work_log.sys_tray_icon import SysTrayIcon
+from nx_work_log.minute_timer import MinuteTimer
 
 paused = True
 icons = {'running': os.path.join(os.path.abspath(os.path.dirname(__file__)), 'SysTrayRunning.ico'),
          'paused': os.path.join(os.path.abspath(os.path.dirname(__file__)), 'SysTrayPaused.ico')}
 minute_timer = None
 my_sys_tray_icon = None
-
-
-class MinuteTimer():
-    def __init__(self, callback_function):
-        self.callback_function = callback_function
-        self.next_call = time.time()
-        self.__timer()
-
-    def cancel(self):
-        self.thread.cancel()
-
-    def __timer(self):
-        self.next_call = self.next_call + 60
-        self.thread = threading.Timer(self.next_call - time.time(), self.__timer)
-        self.thread.start()
-        self.callback_function()
-
+config_file_name = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'configuration.json')
+configuration = {}
 
 def show_change_time_dialog(sys_tray_icon):
     ChangeTimeDialog().show_window()
 
+def reset_time(sys_tray_icon):
+    ChangeTimeDialog().set_time(0)
 
 def pause_clicked(sys_tray_icon):
     global paused
@@ -47,7 +34,16 @@ def minute_timer_callback():
         dialog_time = ChangeTimeDialog().get_time()
         dialog_time += 1
         ChangeTimeDialog().set_time(dialog_time)
-        my_sys_tray_icon.set_hover_text('{:02d}:{:02d}'.format(int(dialog_time / 60), dialog_time % 60))
+
+
+def change_time_dialog_time_changed_callback(minutes):
+    if my_sys_tray_icon is not None:
+        my_sys_tray_icon.set_hover_text('{:02d}:{:02d}'.format(int(minutes / 60), minutes % 60))
+
+    if os.path.exists(config_file_name):
+        configuration['logged_minutes'] = minutes
+        with open(config_file_name, 'w') as json_file:
+            json.dump(configuration, json_file)
 
 
 def on_startup(sys_tray_icon):
@@ -68,11 +64,23 @@ def main():
 
     menu_options = [
         ('Change Time', None, show_change_time_dialog),
+        ('Reset Time', None, reset_time),
         ('Pause', is_paused, pause_clicked),
     ]
 
+    ChangeTimeDialog().set_time_changed_callback(change_time_dialog_time_changed_callback)
+
+    # Load the logged time from the json file if it exists
+    if os.path.exists(config_file_name):
+        with open(config_file_name) as json_file:
+            configuration = json.load(json_file)
+        ChangeTimeDialog().set_time(configuration['logged_minutes'])
+
+    # Create a minute timer for logging the worked minutes
     minute_timer = MinuteTimer(minute_timer_callback)
-    SysTrayIcon(icons['paused'], '00:00', menu_options, call_on_startup=on_startup, on_exit=on_exit, default_menu_index=1)
+
+    # Create the system tray icon and menus. This function is blocking.
+    SysTrayIcon(icons['paused'], '{:02d}:{:02d}'.format(int(configuration['logged_minutes'] / 60), configuration['logged_minutes'] % 60), menu_options, call_on_startup=on_startup, on_exit=on_exit, default_menu_index=2)
 
 
 if __name__ == '__main__':

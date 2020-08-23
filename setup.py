@@ -1,16 +1,27 @@
 from setuptools import setup
 import pathlib
 
+cmdclass = {}
+
+try:
+    from sphinx.setup_command import BuildDoc
+    cmdclass['build_sphinx'] = BuildDoc
+except ImportError:
+    print('WARNING: sphinx not available, not building docs')
+
 here = pathlib.Path(__file__).parent.resolve()
 
+name = 'nx_work_log'
+
 # Get the long description from the README file
-long_description = (here / 'README.md').read_text(encoding='utf-8')
+long_description = (here / 'README.rst').read_text(encoding='utf-8')
 
 setup(
-    name='nx_work_log',
+
+    name=name,
     description='NX Solutions Work Log',
     long_description=long_description,
-    long_description_content_type='text/markdown',
+    long_description_content_type='text/x-rst',
 
     url='https://github.com/xanderhendriks/nx-work-log',
 
@@ -18,9 +29,9 @@ setup(
     author_email='xander.hendriks@nx-solutions.com',
 
     classifiers=[  # Optional
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: Microsoft :: Windows",
+        'Programming Language :: Python :: 3',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: Microsoft :: Windows',
         'Programming Language :: Python :: 3 :: Only',
     ],
 
@@ -29,13 +40,14 @@ setup(
     python_requires='>=3.6',
     install_requires=['pywin32'],
     setup_requires=[
-        "setuptools_scm",
-        "wheel",
+        'setuptools_scm',
+        'wheel',
     ],
 
     extras_require={
         'dev': ['check-manifest'],
         'test': ['pytest'],
+        'doc': ['sphinx'],
     },
 
     package_data={
@@ -55,8 +67,13 @@ setup(
 
     use_scm_version={
         'relative_to': __file__,
-        'version_scheme': 'post-release',
         'write_to': 'nx_work_log/version.py',
-        'local_scheme': 'no-local-version'
+    },
+
+    command_options={
+        'build_sphinx': {
+            'project': ('setup.py', name),
+            'source_dir': ('setup.py', 'doc'),
+        }
     },
 )

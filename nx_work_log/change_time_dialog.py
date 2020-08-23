@@ -28,6 +28,7 @@ class ChangeTimeDialog():
             rc_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'nx_work_log.rc')
             self.resources = win32rcparser.Parse(rc_file)
             self.minutes = 0
+            self.time_changed_callback = None
 
         def get_time(self):
             if self.hwnd is not None:
@@ -43,6 +44,12 @@ class ChangeTimeDialog():
             if self.hwnd is not None:
                 win32gui.SetWindowText(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_HOURS']), str(int(self.minutes / 60)))
                 win32gui.SetWindowText(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_MINUTES']), str(self.minutes % 60))
+
+            if self.time_changed_callback is not None:
+                self.time_changed_callback(minutes)
+
+        def set_time_changed_callback(self, time_changed_callback):
+            self.time_changed_callback = time_changed_callback
 
         def show_window(self):
             if self.hwnd is None:

@@ -13,3 +13,4 @@ version.py
 *.filters
 *.user
 *.vcxproj
+doc/_autosummary/*

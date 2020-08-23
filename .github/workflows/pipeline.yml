@@ -21,20 +21,29 @@ jobs:
           checkName: 'lint-flake8'   # NOTE: this needs to be the same as the job name
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Run Pytest for testing the code
-      #   run: python -m pytest
-      # - name: Upload pytest test results
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: pytest-results
-      #     path: junit/test-results.xml
-      #   # Use always() to always run this step to publish test results when there are test failures
-      #   if: ${{ always() }}
+      - name: Run Pytest for testing the code
+        run: python -m pytest
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v1
+        with:
+          name: pytest-results
+          path: junit/test-results.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
+      - name: Create documentation
+        run: python setup.py build_sphinx
+      - name: Deploy documentation
+        uses: JamesIves/github-pages-deploy-action@3.5.9
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: build/sphinx/html # The folder the action should deploy.
       - name: Build a binary wheel and a source tarball
         run: python setup.py sdist bdist_wheel --plat-name win32
       - name: Publish package to Test PyPI
         uses: pypa/gh-action-pypi-publish@v1.3.1
         with:
+          skip_existing: true
           password: ${{ secrets.test_pypi_key }}
           repository_url: https://test.pypi.org/legacy/
       - name: Publish package to PyPI

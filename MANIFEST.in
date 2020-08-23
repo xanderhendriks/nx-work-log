@@ -7,4 +7,6 @@ include *.md
 include LICENSE.txt
 
 # Include the data files
+include pytest.ini
 recursive-include data *
+recursive-include tests *.py
