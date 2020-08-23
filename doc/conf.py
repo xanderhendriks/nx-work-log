@@ -24,7 +24,7 @@ author = 'Xander Hendriks'
 release = get_distribution('nx_work_log').version.split("+")[0]
 
 # for example take major/minor
-version = '.'.join(release.split('.')[:2])
+version = release
 
 
 # -- General configuration ---------------------------------------------------

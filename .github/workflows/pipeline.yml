@@ -32,7 +32,8 @@ jobs:
         if: ${{ always() }}
       - name: Create documentation
         run: python setup.py build_sphinx
-      - name: Deploy documentation
+      - name: Publish documentation
+        if: startsWith(github.ref, 'refs/tags')
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
