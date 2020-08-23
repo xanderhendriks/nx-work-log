@@ -21,15 +21,15 @@ jobs:
           checkName: 'lint-flake8'   # NOTE: this needs to be the same as the job name
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      - name: Run Pytest for testing the code
-#        run: python -m pytest
-#      - name: Upload pytest test results
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: pytest-results
-#          path: junit/test-results.xml
-#        # Use always() to always run this step to publish test results when there are test failures
-#        if: ${{ always() }}
+      - name: Run Pytest for testing the code
+        run: python -m pytest
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: pytest-results
+          path: junit/test-results.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}
       - name: Create documentation
         run: python setup.py build_sphinx
       - name: Publish documentation

@@ -10,13 +10,23 @@ except ImportError:
 
 
 class SysTrayIcon(object):
-    '''TODO'''
     EXIT = 'EXIT'
     SPECIAL_ACTIONS = [EXIT]
 
     FIRST_ID = 1023
 
     def __init__(self, icon, hover_text, menu_options, on_exit=None, default_menu_index=None, window_class_name=None, call_on_startup=None):
+        """
+        The SysTrayIcon class implements an icon in the windows system tray, which allows left click on the icon for an action 
+        and right click for a menu 
+        :param icon: Full path to icon file
+        :param hover_text: Text to show when hovering above icon
+        :param menu_options: List of menu options and functions to call
+        :param on_exit: FUnction to call when exiting
+        :param default_menu_index: The menu item to select when clicking the icon
+        :param window_class_name: Classname
+        :param call_on_startup: Function to call on startup
+        """
         self.icon = icon
         self.hover_text = hover_text
         self.on_exit = on_exit
@@ -85,6 +95,10 @@ class SysTrayIcon(object):
         return result
 
     def refresh_icon(self, recreate=False):
+        """
+        Refresh the icon. To be called after updating the icon.
+        :param recreate: Recreate the icon
+        """
         # Try and find a custom icon
         hinst = win32gui.GetModuleHandle(None)
         if isinstance(self.icon, str):
@@ -115,12 +129,18 @@ class SysTrayIcon(object):
         win32gui.Shell_NotifyIcon(message, self.notify_id)
 
     def set_icon(self, filename, hover_text=None):
+        """
+
+        """
         if hover_text is not None:
             self.hover_text = hover_text
         self.icon = filename
         self.refresh_icon()
 
     def set_hover_text(self, hover_text):
+        """
+        
+        """
         self.hover_text = hover_text
         self.refresh_icon()
 
