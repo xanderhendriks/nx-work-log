@@ -5,3 +5,4 @@ include:
     - _static
     - _modules
     - _templates
+    - _autosummary
