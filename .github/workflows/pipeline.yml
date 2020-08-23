@@ -24,7 +24,7 @@ jobs:
 #      - name: Run Pytest for testing the code
 #        run: python -m pytest
 #      - name: Upload pytest test results
-#        uses: actions/upload-artifact@v1
+#        uses: actions/upload-artifact@v2
 #        with:
 #          name: pytest-results
 #          path: junit/test-results.xml
@@ -42,11 +42,11 @@ jobs:
       - name: Build a binary wheel and a source tarball
         run: python setup.py sdist bdist_wheel --plat-name win32
       - name: Upload wheel file
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: wheel
-#          path: dist/**
-        run: ls -l */*
+        run: ls -l dist/*
+        uses: actions/upload-artifact@v2
+        with:
+          name: wheel
+          path: dist/**
       - name: Publish package to PyPI
         if: startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@v1.3.1
