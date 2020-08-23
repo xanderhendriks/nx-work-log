@@ -42,7 +42,6 @@ jobs:
       - name: Build a binary wheel and a source tarball
         run: python setup.py sdist bdist_wheel --plat-name win32
       - name: Upload wheel file
-        run: ls -l dist/*
         uses: actions/upload-artifact@v2
         with:
           name: wheel
