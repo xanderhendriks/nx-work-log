@@ -38,7 +38,7 @@ setup(
     packages=['nx_work_log'],
 
     python_requires='>=3.6',
-    install_requires=['pywin32'],
+    install_requires=['pywin32 ; platform_system=="Windows"'],
     setup_requires=[
         'setuptools_scm',
         'wheel',
