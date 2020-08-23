@@ -2,7 +2,7 @@
 Welcome to nx_work_log's documentation
 ======================================
 
-.. include:: ../../README.rst
+.. include:: ../README.rst
 
 .. autosummary::
    :toctree: autosummary
