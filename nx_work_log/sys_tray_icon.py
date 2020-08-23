@@ -17,8 +17,8 @@ class SysTrayIcon(object):
 
     def __init__(self, icon, hover_text, menu_options, on_exit=None, default_menu_index=None, window_class_name=None, call_on_startup=None):
         """
-        The SysTrayIcon class implements an icon in the windows system tray, which allows left click on the icon for an action 
-        and right click for a menu 
+        The SysTrayIcon class implements an icon in the windows system tray, which allows left click on the icon for an action
+        and right click for a menu
         :param icon: Full path to icon file
         :param hover_text: Text to show when hovering above icon
         :param menu_options: List of menu options and functions to call
@@ -139,7 +139,7 @@ class SysTrayIcon(object):
 
     def set_hover_text(self, hover_text):
         """
-        
+
         """
         self.hover_text = hover_text
         self.refresh_icon()
