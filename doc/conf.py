@@ -3,6 +3,7 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+from pkg_resources import get_distribution
 
 # -- Path setup --------------------------------------------------------------
 
@@ -13,9 +14,6 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../'))
-
-from pkg_resources import get_distribution
-
 
 # -- Project information -----------------------------------------------------
 

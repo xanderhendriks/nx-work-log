@@ -1,6 +1,7 @@
 import threading
 import time
 
+
 class MinuteTimer():
     """
     Minute Timer class calls the given callback function once every minute

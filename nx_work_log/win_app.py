@@ -12,11 +12,14 @@ my_sys_tray_icon = None
 config_file_name = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'configuration.json')
 configuration = {}
 
+
 def show_change_time_dialog(sys_tray_icon):
     ChangeTimeDialog().show_window()
 
+
 def reset_time(sys_tray_icon):
     ChangeTimeDialog().set_time(0)
+
 
 def pause_clicked(sys_tray_icon):
     global paused
@@ -80,7 +83,8 @@ def main():
     minute_timer = MinuteTimer(minute_timer_callback)
 
     # Create the system tray icon and menus. This function is blocking.
-    SysTrayIcon(icons['paused'], '{:02d}:{:02d}'.format(int(configuration['logged_minutes'] / 60), configuration['logged_minutes'] % 60), menu_options, call_on_startup=on_startup, on_exit=on_exit, default_menu_index=2)
+    SysTrayIcon(icons['paused'], '{:02d}:{:02d}'.format(int(configuration['logged_minutes'] / 60), configuration['logged_minutes'] % 60),
+                menu_options, call_on_startup=on_startup, on_exit=on_exit, default_menu_index=2)
 
 
 if __name__ == '__main__':

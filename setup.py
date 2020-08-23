@@ -45,7 +45,7 @@ setup(
     ],
 
     extras_require={
-        'dev': ['check-manifest'],
+        'dev': ['check-manifest', 'flake8'],
         'test': ['pytest'],
         'doc': ['sphinx'],
     },
