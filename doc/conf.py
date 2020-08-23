@@ -4,6 +4,7 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 from pkg_resources import get_distribution
+import sphinx_rtd_theme
 
 # -- Path setup --------------------------------------------------------------
 
@@ -35,6 +36,7 @@ version = '.'.join(release.split('.')[:2])
 extensions = [
     'sphinx.ext.autodoc',  # Core library for html generation from docstrings
     'sphinx.ext.autosummary',  # Create neat summary tables
+    'sphinx_rtd_theme',  # Read the Docs theme
 ]
 autosummary_generate = True  # Turn on sphinx.ext.autosummary
 
@@ -52,7 +54,8 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
+html_theme_path = ['_theme']
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

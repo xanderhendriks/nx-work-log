@@ -47,7 +47,7 @@ setup(
     extras_require={
         'dev': ['check-manifest', 'flake8'],
         'test': ['pytest'],
-        'doc': ['sphinx'],
+        'doc': ['sphinx', 'sphinx-rtd-theme'],
     },
 
     package_data={
