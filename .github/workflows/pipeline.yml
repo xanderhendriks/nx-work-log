@@ -40,12 +40,11 @@ jobs:
           FOLDER: build/sphinx/html # The folder the action should deploy.
       - name: Build a binary wheel and a source tarball
         run: python setup.py sdist bdist_wheel --plat-name win32
-      - name: Publish package to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.3.1
+      - name: Upload wheel file
+        uses: actions/upload-artifact@v1
         with:
-          skip_existing: true
-          password: ${{ secrets.test_pypi_key }}
-          repository_url: https://test.pypi.org/legacy/
+          name: wheel
+          path: dist/*.whl
       - name: Publish package to PyPI
         if: startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@v1.3.1
