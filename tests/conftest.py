@@ -1,5 +1,5 @@
 import pytest
-from nx_work_log.win_app import MinuteTimer
+from nx_work_log.minute_timer import MinuteTimer
 
 
 @pytest.fixture()
