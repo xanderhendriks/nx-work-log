@@ -9,6 +9,14 @@ from pywin.mfc import dialog
 
 
 class ChangeTimeDialog():
+    """
+    Singleton class providing the dialog to change the time
+
+    .. note:: An experiment using the resource parser. The resource file nx_work_log.rc can be opened and modified in
+              Microsoft Visual Studio
+    .. document private classes
+    .. automethod:: __ChangeTimeDialog
+    """
     instance = None
 
     def __new__(cls):
@@ -23,6 +31,11 @@ class ChangeTimeDialog():
         return setattr(self.instance, name)
 
     class __ChangeTimeDialog(dialog.Dialog):
+        """
+        Internal class implementing the change time dialog
+        :public
+        """
+
         def __init__(self):
             self.hwnd = None
             rc_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'nx_work_log.rc')
@@ -31,6 +44,10 @@ class ChangeTimeDialog():
             self.time_changed_callback = None
 
         def get_time(self):
+            """
+            Get the current logged number of minutes
+            :return: Number of minutes
+            """
             if self.hwnd is not None:
                 minutes = 60 * int(win32gui.GetWindowText(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_HOURS'])))
                 minutes += int(win32gui.GetWindowText(win32gui.GetDlgItem(self.hwnd, self.resources.ids['IDC_MINUTES'])))
@@ -39,6 +56,10 @@ class ChangeTimeDialog():
             return self.minutes
 
         def set_time(self, minutes):
+            """
+            Set the current logged number of minutes
+            :param minutes: Number of minutes
+            """
             self.minutes = minutes
 
             if self.hwnd is not None:
@@ -49,9 +70,16 @@ class ChangeTimeDialog():
                 self.time_changed_callback(minutes)
 
         def set_time_changed_callback(self, time_changed_callback):
+            """
+            Set the callback function for time changes
+            :param time_changed_callback: Callback function
+            """
             self.time_changed_callback = time_changed_callback
 
         def show_window(self):
+            """
+            Show the change time dialog window
+            """
             if self.hwnd is None:
                 self.__create_window()
             else:
