@@ -23,7 +23,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/x-rst',
 
-    url='https://github.com/xanderhendriks/nx-work-log',
+    url='https://xanderhendriks.github.io/nx-work-log',
 
     author='Xander Hendriks',
     author_email='xander.hendriks@nx-solutions.com',
