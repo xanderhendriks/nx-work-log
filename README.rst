@@ -1,4 +1,4 @@
-NX Time Log
+NX Work Log
 
 I wrote this program originally in Borland C++ Builder. It adds an icon to the windows system tray that is green when it's
 measuring time and red when it's paused. I use it to measure my working hours, so I can switch it off when doing non work
