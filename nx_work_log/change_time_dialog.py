@@ -1,4 +1,5 @@
 import os
+import platform
 import struct
 import win32api
 import win32con
@@ -122,7 +123,7 @@ class ChangeTimeDialog():
             id = win32api.LOWORD(wparam)
 
             # Read the NMUPDOWN structure
-            format = 'Piiii'
+            format = 'Pqqii' if platform.architecture()[0] == '64bit' else 'Piiii'
             bytes = win32ui.GetBytes(lparam, struct.calcsize(format))
             _, _, _, _, i_delta = struct.unpack(format, bytes)
 
