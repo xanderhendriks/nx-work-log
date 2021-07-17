@@ -1,7 +1,3 @@
-
-Welcome to nx_work_log's documentation
-======================================
-
 .. include:: ../README.rst
 
 .. autosummary::

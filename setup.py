@@ -68,6 +68,7 @@ setup(
     use_scm_version={
         'relative_to': __file__,
         'write_to': 'nx_work_log/version.py',
+        'local_scheme': 'no-local-version',
     },
 
     command_options={
