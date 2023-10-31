@@ -104,10 +104,10 @@ class ChangeTimeDialog():
 
             # centre the dialog
             desktop = win32gui.GetDesktopWindow()
-            l, t, r, b = win32gui.GetWindowRect(self.hwnd)
-            dt_l, dt_t, dt_r, dt_b = win32gui.GetWindowRect(desktop)
-            centre_x, centre_y = win32gui.ClientToScreen(desktop, ((dt_r - dt_l) // 2, (dt_b - dt_t) // 2))
-            win32gui.MoveWindow(hwnd, centre_x - (r // 2), centre_y - (b // 2), r - l, b - t, 0)
+            left, top, right, bottom = win32gui.GetWindowRect(self.hwnd)
+            desktop_left, desktop_top, desktop_right, desktop_bottom = win32gui.GetWindowRect(desktop)
+            centre_x, centre_y = win32gui.ClientToScreen(desktop, ((desktop_right - desktop_left) // 2, (desktop_bottom - desktop_top) // 2))
+            win32gui.MoveWindow(hwnd, centre_x - ((right - left) // 2), centre_y - ((bottom - top) // 2), right - left, bottom - top, 0)
 
         def __on_command(self, hwnd, msg, wparam, lparam):
             id = win32api.LOWORD(wparam)
