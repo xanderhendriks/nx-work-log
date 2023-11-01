@@ -47,7 +47,7 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
-# This value contains a list of modules to be mocked up. This is useful when 
+# This value contains a list of modules to be mocked up. This is useful when
 # some external dependencies are not met at build time and break the building
 # process.
 autodoc_mock_imports = [
