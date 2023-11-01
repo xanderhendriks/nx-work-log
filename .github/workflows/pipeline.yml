@@ -31,7 +31,9 @@ jobs:
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
       - name: Create documentation
-        run:  sphinx-build doc build/sphinx/html
+        run: |
+          sphinx-build doc build/sphinx/html
+          touch build/sphinx/html/.nojekyll
       - name: Publish documentation
         if: startsWith(github.ref, 'refs/tags')
         uses: JamesIves/github-pages-deploy-action@v4.4.3
