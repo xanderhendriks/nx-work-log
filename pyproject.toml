@@ -31,7 +31,7 @@ nxworklog = "nx_work_log.win_app:main"
 [project.optional-dependencies]
 dev = ["wheel", "check-manifest", "flake8"]
 test = ["pytest"]
-doc = ["sphinx", "sphinx-rtd-theme", "pywin32"]
+doc = ["sphinx", "sphinx-rtd-theme"]
 
 [tool.setuptools]
 packages = ["nx_work_log"]

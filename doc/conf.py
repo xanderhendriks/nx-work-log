@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 
 project = 'nx_work_log'
-copyright = '2020, Xander Hendriks'
+copyright = '2023, Xander Hendriks'
 author = 'Xander Hendriks'
 
 release = get_distribution('nx_work_log').version.split("+")[0]
@@ -47,6 +47,19 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# This value contains a list of modules to be mocked up. This is useful when 
+# some external dependencies are not met at build time and break the building
+# process.
+autodoc_mock_imports = [
+    'win32api',
+    'win32con',
+    'win32gui_struct',
+    'win32rcparser',
+    'win_app',
+    'win32gui',
+    'win32ui',
+    'pywin'
+]
 
 # -- Options for HTML output -------------------------------------------------
 
