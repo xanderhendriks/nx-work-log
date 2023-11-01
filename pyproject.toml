@@ -23,7 +23,7 @@ dynamic = ["version"]
 [project.urls]
 Documentation = "https://xanderhendriks.github.io/nx-work-log"
 Issues = "https://github.com/xanderhendriks/nx-work-log/issues"
-Repository  = "https://github.com/xanderhendriks/nx-work-log"
+Repository = "https://github.com/xanderhendriks/nx-work-log"
 
 [project.gui-scripts]
 nxworklog = "nx_work_log.win_app:main"
@@ -31,7 +31,7 @@ nxworklog = "nx_work_log.win_app:main"
 [project.optional-dependencies]
 dev = ["wheel", "check-manifest", "flake8"]
 test = ["pytest"]
-doc = ["sphinx", "sphinx-rtd-theme"]
+doc = ["sphinx", "sphinx-rtd-theme", "pywin32"]
 
 [tool.setuptools]
 packages = ["nx_work_log"]
