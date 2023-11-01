@@ -31,7 +31,7 @@ jobs:
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
       - name: Create documentation
-        run: python setup.py build_sphinx
+        run:  sphinx-build doc build/sphinx/html
       - name: Publish documentation
         if: startsWith(github.ref, 'refs/tags')
         uses: JamesIves/github-pages-deploy-action@3.5.9
@@ -40,12 +40,14 @@ jobs:
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: build/sphinx/html # The folder the action should deploy.
       - name: Build a binary wheel and a source tarball
-        run: python setup.py sdist bdist_wheel --plat-name win32
+        run: |
+          python -m build
+          python -m wheel tags --platform-tag win32 dist/*.whl
       - name: Upload wheel file
         uses: actions/upload-artifact@v2
         with:
           name: wheel
-          path: dist/**
+          path: dist/*win32.whl
       - name: Publish package to PyPI
         if: startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@v1.3.1
