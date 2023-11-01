@@ -16,6 +16,6 @@ def test_timer(minute_timer):
 
     while counter < 2:
         if check_time != timer_time:
-            assert int(timer_time - check_time) == 60, 'Incorrect timer callback timing'
+            assert (timer_time - check_time) == pytest.approx(60.0, 0.01), 'Incorrect timer callback timing'
             check_time = timer_time
             counter += 1
