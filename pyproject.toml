@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61", "setuptools_scm[toml]>=8", "wheel"]
+requires = ["setuptools>=61", "setuptools_scm[toml]>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -29,7 +29,7 @@ Repository  = "https://github.com/xanderhendriks/nx-work-log"
 nxworklog = "nx_work_log.win_app:main"
 
 [project.optional-dependencies]
-dev = ["check-manifest", "flake8"]
+dev = ["wheel", "check-manifest", "flake8"]
 test = ["pytest"]
 doc = ["sphinx", "sphinx-rtd-theme"]
 
