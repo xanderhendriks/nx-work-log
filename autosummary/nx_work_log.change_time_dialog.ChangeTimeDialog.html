@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nx_work_log.minute_timer.MinuteTimer &mdash; nx_work_log 1.1.1 documentation</title>
+  <title>nx_work_log.change_time_dialog.ChangeTimeDialog &mdash; nx_work_log 1.1.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="nx_work_log.sys_tray_icon" href="nx_work_log.sys_tray_icon.html" />
-    <link rel="prev" title="nx_work_log.minute_timer" href="nx_work_log.minute_timer.html" /> 
+    <link rel="next" title="nx_work_log.minute_timer" href="nx_work_log.minute_timer.html" />
+    <link rel="prev" title="nx_work_log.change_time_dialog" href="nx_work_log.change_time_dialog.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,14 +47,14 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="nx_work_log.html">nx_work_log</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="nx_work_log.change_time_dialog.html">nx_work_log.change_time_dialog</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="nx_work_log.minute_timer.html">nx_work_log.minute_timer</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">nx_work_log.minute_timer.MinuteTimer</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nx_work_log.minute_timer.MinuteTimer"><code class="docutils literal notranslate"><span class="pre">MinuteTimer</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="nx_work_log.change_time_dialog.html">nx_work_log.change_time_dialog</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">nx_work_log.change_time_dialog.ChangeTimeDialog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nx_work_log.change_time_dialog.ChangeTimeDialog"><code class="docutils literal notranslate"><span class="pre">ChangeTimeDialog</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="nx_work_log.minute_timer.html">nx_work_log.minute_timer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nx_work_log.sys_tray_icon.html">nx_work_log.sys_tray_icon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nx_work_log.version.html">nx_work_log.version</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nx_work_log.win_app.html">nx_work_log.win_app</a></li>
@@ -77,10 +77,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="nx_work_log.html">nx_work_log</a></li>
-          <li class="breadcrumb-item"><a href="nx_work_log.minute_timer.html">nx_work_log.minute_timer</a></li>
-      <li class="breadcrumb-item active">nx_work_log.minute_timer.MinuteTimer</li>
+          <li class="breadcrumb-item"><a href="nx_work_log.change_time_dialog.html">nx_work_log.change_time_dialog</a></li>
+      <li class="breadcrumb-item active">nx_work_log.change_time_dialog.ChangeTimeDialog</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/autosummary/nx_work_log.minute_timer.MinuteTimer.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/autosummary/nx_work_log.change_time_dialog.ChangeTimeDialog.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -88,36 +88,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="nx-work-log-minute-timer-minutetimer">
-<h1>nx_work_log.minute_timer.MinuteTimer<a class="headerlink" href="#nx-work-log-minute-timer-minutetimer" title="Link to this heading"></a></h1>
+  <section id="nx-work-log-change-time-dialog-changetimedialog">
+<h1>nx_work_log.change_time_dialog.ChangeTimeDialog<a class="headerlink" href="#nx-work-log-change-time-dialog-changetimedialog" title="Link to this heading"></a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="nx_work_log.minute_timer.MinuteTimer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nx_work_log.minute_timer.</span></span><span class="sig-name descname"><span class="pre">MinuteTimer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_function</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nx_work_log.minute_timer.MinuteTimer" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nx_work_log.change_time_dialog.ChangeTimeDialog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nx_work_log.change_time_dialog.</span></span><span class="sig-name descname"><span class="pre">ChangeTimeDialog</span></span><a class="headerlink" href="#nx_work_log.change_time_dialog.ChangeTimeDialog" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Minute Timer class calls the given callback function once every minute
-:param callback_function: Callback function to be called</p>
+<p>Singleton class providing the dialog to change the time</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An experiment using the resource parser. The resource file nx_work_log.rc can be opened and modified in
+Microsoft Visual Studio</p>
+</div>
 <dl class="py method">
-<dt class="sig sig-object py" id="nx_work_log.minute_timer.MinuteTimer.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_function</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nx_work_log.minute_timer.MinuteTimer.__init__" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="nx_work_log.change_time_dialog.ChangeTimeDialog.__ChangeTimeDialog">
+<span class="sig-name descname"><span class="pre">__ChangeTimeDialog</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nx_work_log.change_time_dialog.ChangeTimeDialog.__ChangeTimeDialog" title="Link to this definition"></a></dt>
+<dd><p>Internal class implementing the change time dialog
+:public</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nx_work_log.change_time_dialog.ChangeTimeDialog.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nx_work_log.change_time_dialog.ChangeTimeDialog.__init__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#nx_work_log.minute_timer.MinuteTimer.__init__" title="nx_work_log.minute_timer.MinuteTimer.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(callback_function)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#nx_work_log.change_time_dialog.ChangeTimeDialog.__init__" title="nx_work_log.change_time_dialog.ChangeTimeDialog.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
 <td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#nx_work_log.minute_timer.MinuteTimer.cancel" title="nx_work_log.minute_timer.MinuteTimer.cancel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cancel</span></code></a>()</p></td>
-<td><p>Cancel the timer and its internal thread</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py method">
-<dt class="sig sig-object py" id="nx_work_log.minute_timer.MinuteTimer.cancel">
-<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nx_work_log.minute_timer.MinuteTimer.cancel" title="Link to this definition"></a></dt>
-<dd><p>Cancel the timer and its internal thread</p>
-</dd></dl>
-
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">instance</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </section>
@@ -126,8 +136,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="nx_work_log.minute_timer.html" class="btn btn-neutral float-left" title="nx_work_log.minute_timer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="nx_work_log.sys_tray_icon.html" class="btn btn-neutral float-right" title="nx_work_log.sys_tray_icon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nx_work_log.change_time_dialog.html" class="btn btn-neutral float-left" title="nx_work_log.change_time_dialog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nx_work_log.minute_timer.html" class="btn btn-neutral float-right" title="nx_work_log.minute_timer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

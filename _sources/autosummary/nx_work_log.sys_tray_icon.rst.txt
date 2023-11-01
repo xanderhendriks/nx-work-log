@@ -1,0 +1,38 @@
+nx\_work\_log.sys\_tray\_icon
+=============================
+
+.. automodule:: nx_work_log.sys_tray_icon
+  
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      non_string_iterable
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: custom-class-template.rst
+   
+      SysTrayIcon
+   
+   
+
+   
+   
+   
+
+
+

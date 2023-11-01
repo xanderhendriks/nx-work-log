@@ -1,0 +1,31 @@
+nx\_work\_log.change\_time\_dialog
+==================================
+
+.. automodule:: nx_work_log.change_time_dialog
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:
+      :template: custom-class-template.rst
+   
+      ChangeTimeDialog
+   
+   
+
+   
+   
+   
+
+
+

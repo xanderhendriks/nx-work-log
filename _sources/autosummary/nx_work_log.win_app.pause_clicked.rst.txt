@@ -1,0 +1,6 @@
+nx\_work\_log.win\_app.pause\_clicked
+=====================================
+
+.. currentmodule:: nx_work_log.win_app
+
+.. autofunction:: pause_clicked

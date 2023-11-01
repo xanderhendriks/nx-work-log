@@ -1,0 +1,31 @@
+nx\_work\_log.change\_time\_dialog.ChangeTimeDialog
+===================================================
+
+.. currentmodule:: nx_work_log.change_time_dialog
+
+.. autoclass:: ChangeTimeDialog
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ChangeTimeDialog.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ChangeTimeDialog.instance
+   
+   

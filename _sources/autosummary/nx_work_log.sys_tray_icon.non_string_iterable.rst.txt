@@ -1,0 +1,6 @@
+nx\_work\_log.sys\_tray\_icon.non\_string\_iterable
+===================================================
+
+.. currentmodule:: nx_work_log.sys_tray_icon
+
+.. autofunction:: non_string_iterable

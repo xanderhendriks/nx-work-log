@@ -1,0 +1,39 @@
+nx\_work\_log.win\_app
+======================
+
+.. automodule:: nx_work_log.win_app
+  
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:
+   
+      change_time_dialog_time_changed_callback
+      exit
+      is_paused
+      main
+      minute_timer_callback
+      on_exit
+      on_startup
+      pause_clicked
+      reset_time
+      show_change_time_dialog
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

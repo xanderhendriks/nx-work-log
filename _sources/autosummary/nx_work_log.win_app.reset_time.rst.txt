@@ -1,0 +1,6 @@
+nx\_work\_log.win\_app.reset\_time
+==================================
+
+.. currentmodule:: nx_work_log.win_app
+
+.. autofunction:: reset_time

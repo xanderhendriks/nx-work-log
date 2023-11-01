@@ -1,0 +1,45 @@
+nx\_work\_log.sys\_tray\_icon.SysTrayIcon
+=========================================
+
+.. currentmodule:: nx_work_log.sys_tray_icon
+
+.. autoclass:: SysTrayIcon
+   :members:
+   :show-inheritance:
+   :inherited-members:
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SysTrayIcon.__init__
+      ~SysTrayIcon.command
+      ~SysTrayIcon.create_menu
+      ~SysTrayIcon.destroy
+      ~SysTrayIcon.execute_menu_option
+      ~SysTrayIcon.exit
+      ~SysTrayIcon.notify
+      ~SysTrayIcon.prep_menu_icon
+      ~SysTrayIcon.refresh_icon
+      ~SysTrayIcon.restart
+      ~SysTrayIcon.set_hover_text
+      ~SysTrayIcon.set_icon
+      ~SysTrayIcon.show_menu
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SysTrayIcon.EXIT
+      ~SysTrayIcon.FIRST_ID
+      ~SysTrayIcon.SPECIAL_ACTIONS
+   
+   

@@ -1,0 +1,6 @@
+nx\_work\_log.win\_app.on\_exit
+===============================
+
+.. currentmodule:: nx_work_log.win_app
+
+.. autofunction:: on_exit

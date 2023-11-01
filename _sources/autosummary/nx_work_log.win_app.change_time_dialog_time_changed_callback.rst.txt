@@ -1,0 +1,6 @@
+nx\_work\_log.win\_app.change\_time\_dialog\_time\_changed\_callback
+====================================================================
+
+.. currentmodule:: nx_work_log.win_app
+
+.. autofunction:: change_time_dialog_time_changed_callback
