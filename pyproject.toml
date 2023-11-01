@@ -33,6 +33,9 @@ dev = ["check-manifest", "flake8"]
 test = ["pytest"]
 doc = ["sphinx", "sphinx-rtd-theme"]
 
+[tool.setuptools]
+packages = ["nx_work_log"]
+
 [tool.setuptools.package-data]
 nx_work_log= ["nx_work_log.rc", "SysTrayPaused.ico", "SysTrayRunning.ico"]
 
