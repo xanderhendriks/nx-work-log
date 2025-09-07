@@ -63,8 +63,6 @@ def change_time_dialog_time_changed_callback(minutes):
     This is the callback function for the change time dialog, which keeps the time and whenever it changes due to the
     timer or user input then this function is called.
     """
-    global configuration
-
     if my_sys_tray_icon is not None:
         my_sys_tray_icon.set_hover_text('{:02d}:{:02d}'.format(int(minutes / 60), minutes % 60))
 
