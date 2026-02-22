@@ -1,8 +1,14 @@
 import json
 import os
-from nx_work_log.change_time_dialog import ChangeTimeDialog
-from nx_work_log.sys_tray_icon import SysTrayIcon
+import platform
 from nx_work_log.minute_timer import MinuteTimer
+
+if platform.system() == 'Windows':
+    from nx_work_log.change_time_dialog import ChangeTimeDialog
+    from nx_work_log.sys_tray_icon import SysTrayIcon
+else:
+    from nx_work_log.linux_change_time_dialog import ChangeTimeDialog
+    from nx_work_log.linux_sys_tray_icon import SysTrayIcon
 
 paused = True
 icons = {'running': os.path.join(os.path.abspath(os.path.dirname(__file__)), 'SysTrayRunning.ico'),
