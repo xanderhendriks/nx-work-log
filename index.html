@@ -1,21 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NX Work Log &mdash; nx_work_log 1.1.1 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>NX Work Log &mdash; nx_work_log 1.2.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=58fbf978"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6efca38a"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -33,9 +33,6 @@
           <a href="#" class="icon icon-home">
             nx_work_log
           </a>
-              <div class="version">
-                1.1.1
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -82,6 +79,23 @@ to rewrite the application in Python as I wanted to make some improvements to th
 version of C++ Builder.</p>
 <p>As I was exploring the winpy32 package I found it contains a resource file parser and I thought it would be cool to define
 the dialog in Microsoft Visual Studio and see how this can be used in Python.</p>
+</section>
+<section id="linux-port">
+<h1>Linux port<a class="headerlink" href="#linux-port" title="Link to this heading"></a></h1>
+<p>As I’m also working on Projects requiring Ubuntu, I wanted to make the tool cross platform.</p>
+<p>The Linux tray implementation uses <code class="docutils literal notranslate"><span class="pre">pystray</span></code> and behavior depends on the backend provided by the desktop environment.</p>
+<ul class="simple">
+<li><p>Left/right mouse button behavior is not always identical to Windows. With the AppIndicator backend, primary click is menu-focused, so left click may open the menu instead of toggling pause.</p></li>
+<li><p>Hover tooltip text is often not shown by Linux shells even when the application updates the tray title.</p></li>
+<li><p>As a workaround for missing hover text, the current logged time is shown as the first (disabled) menu entry.</p></li>
+<li><p>If AppIndicator libraries are missing, the app falls back to the Xorg backend. On Xorg, menu support is limited and right-click menu entries may be unavailable.</p></li>
+</ul>
+<p>For full tray menu support on Ubuntu, install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libayatana-appindicator3-1<span class="w"> </span>gir1.2-ayatanaappindicator3-0.1
+</pre></div>
+</div>
+<p>You can force a specific backend for troubleshooting by setting the <code class="docutils literal notranslate"><span class="pre">PYSTRAY_BACKEND</span></code> environment variable (for example <code class="docutils literal notranslate"><span class="pre">appindicator</span></code> or <code class="docutils literal notranslate"><span class="pre">xorg</span></code>) before starting <code class="docutils literal notranslate"><span class="pre">nxworklog</span></code>.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/nx_work_log.html#module-nx_work_log" title="nx_work_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nx_work_log</span></code></a></p></td>
