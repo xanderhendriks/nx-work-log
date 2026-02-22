@@ -46,6 +46,7 @@ class SysTrayIcon(object):
         menu_items.append(pystray.MenuItem('Exit', lambda _icon, _item: self._exit()))
 
         image = Image.open(self.icon)
+        image.load()
         self._pystray_icon = pystray.Icon(
             "nxworklog",
             image,
@@ -65,7 +66,9 @@ class SysTrayIcon(object):
         Refresh the icon. To be called after updating the icon.
         """
         if self._pystray_icon is not None:
-            self._pystray_icon.icon = Image.open(self.icon)
+            image = Image.open(self.icon)
+            image.load()
+            self._pystray_icon.icon = image
             self._pystray_icon.title = self.hover_text
 
     def set_hover_text(self, hover_text):
