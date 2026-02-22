@@ -1,9 +1,37 @@
+import os
+
+if 'PYSTRAY_BACKEND' not in os.environ:
+    try:
+        import gi
+        try:
+            gi.require_version('AyatanaAppIndicator3', '0.1')
+        except ValueError:
+            gi.require_version('AppIndicator3', '0.1')
+        os.environ['PYSTRAY_BACKEND'] = 'appindicator'
+    except (ImportError, ValueError):
+        os.environ['PYSTRAY_BACKEND'] = 'xorg'
+
 from PIL import Image
 import pystray
 
 
 class SysTrayIcon(object):
     EXIT = 'EXIT'
+
+    @staticmethod
+    def _create_action(action_func, sys_tray_icon):
+        def action(_icon, _item):
+            action_func(sys_tray_icon)
+        return action
+
+    @staticmethod
+    def _create_checked(check_func):
+        def checked(_item):
+            return check_func()
+        return checked
+
+    def _status_menu_text(self, _item):
+        return self.hover_text
 
     def __init__(self, icon, hover_text, menu_options, on_exit=None, default_menu_index=None, window_class_name=None, call_on_startup=None):
         """
@@ -23,7 +51,9 @@ class SysTrayIcon(object):
         self.default_menu_index = default_menu_index or 0
         self._pystray_icon = None
 
-        menu_items = []
+        menu_items = [
+            pystray.MenuItem(self._status_menu_text, None, enabled=False)
+        ]
         for idx, (option_text, option_icon, option_action) in enumerate(menu_options):
             is_default = (idx == self.default_menu_index)
             if callable(option_icon):
@@ -31,15 +61,15 @@ class SysTrayIcon(object):
                 action_func = option_action
                 menu_items.append(pystray.MenuItem(
                     option_text,
-                    lambda _icon, _item, f=action_func: f(self),
-                    checked=lambda _item, f=check_func: f(),
+                    self._create_action(action_func, self),
+                    checked=self._create_checked(check_func),
                     default=is_default
                 ))
             else:
                 action_func = option_action
                 menu_items.append(pystray.MenuItem(
                     option_text,
-                    lambda _icon, _item, f=action_func: f(self),
+                    self._create_action(action_func, self),
                     default=is_default
                 ))
 
@@ -79,6 +109,7 @@ class SysTrayIcon(object):
         self.hover_text = hover_text
         if self._pystray_icon is not None:
             self._pystray_icon.title = hover_text
+            self._pystray_icon.update_menu()
 
     def exit(self):
         """
